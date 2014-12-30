@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\workflow\Entity\WorkflowGroup;
+use Drupal\workflow\WorkflowState;
 
 class WorkflowForm extends EntityForm {
 
@@ -125,15 +126,19 @@ class WorkflowForm extends EntityForm {
    *   An array of state values.
    */
   public function getDefaultStateValues() {
+    $states = $this->entity->getStates();
     if ($this->entity->isNew()) {
       // Add a default state to serve as an example to the user.
-      $states = array(array('id' => 'created', 'label' => 'Created', 'weight' => 0));
-    }
-    else {
-      $states = $this->entity->getStates();
+      $states[] = new WorkflowState('created', 'Created');
     }
 
-    return $states;
+    // Convert the states into arrays, to match the structure in form state.
+    $default_states = array();
+    foreach ($states as $state) {
+      $default_states[] = $state->toArray();
+    }
+
+    return $default_states;
   }
 
   /**
