@@ -32,8 +32,8 @@ use Drupal\workflow\WorkflowGroupInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "edit-form" = "entity.workflow_group.edit_form",
- *     "delete-form" = "entity.workflow_group.delete_form"
+ *     "edit-form" = "/admin/config/system/workflow_group/{workflow_group}",
+ *     "delete-form" = "/admin/config/system/workflow_group/{workflow_group}/delete"
  *   }
  * )
  */

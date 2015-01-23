@@ -33,8 +33,8 @@ use Drupal\workflow\WorkflowInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "edit-form" = "entity.workflow.edit_form",
- *     "delete-form" = "entity.workflow.delete_form"
+ *     "edit-form" = "/admin/config/system/workflow/{workflow}",
+ *     "delete-form" = "/admin/config/system/workflow/{workflow}/delete"
  *   }
  * )
  */
